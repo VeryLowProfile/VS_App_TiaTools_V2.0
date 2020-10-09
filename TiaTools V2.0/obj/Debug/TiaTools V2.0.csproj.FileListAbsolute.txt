@@ -1,16 +1,16 @@
-C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\bin\Debug\TiaTools.exe.config
-C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\bin\Debug\TiaTools.exe
-C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\bin\Debug\TiaTools.pdb
 C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\bin\Debug\CustomUtility_NET_F.dll
 C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\bin\Debug\CustomUtility_NET_F.pdb
 C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\obj\Debug\TiaTools V2.0.csprojAssemblyReference.cache
-C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\obj\Debug\TiaTools.FormIO.resources
-C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\obj\Debug\TiaTools.FormMessages.resources
-C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\obj\Debug\TiaTools.FormStateMachines.resources
-C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\obj\Debug\TiaTools.FormToolsHome.resources
-C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\obj\Debug\TiaTools.Properties.Resources.resources
 C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\obj\Debug\TiaTools V2.0.csproj.GenerateResource.cache
 C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\obj\Debug\TiaTools V2.0.csproj.CoreCompileInputs.cache
 C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\obj\Debug\TiaTools V2.0.csproj.CopyComplete
-C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\obj\Debug\TiaTools.exe
-C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\obj\Debug\TiaTools.pdb
+C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\obj\Debug\TiaToolsV2_0.Properties.Resources.resources
+C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\obj\Debug\TiaToolsV2_0.FormIO.resources
+C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\obj\Debug\TiaToolsV2_0.FormMessages.resources
+C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\obj\Debug\TiaToolsV2_0.FormStateMachines.resources
+C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\obj\Debug\TiaToolsV2_0.FormToolsHome.resources
+C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\bin\Debug\TiaToolsV2_0.exe.config
+C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\bin\Debug\TiaToolsV2_0.exe
+C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\bin\Debug\TiaToolsV2_0.pdb
+C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\obj\Debug\TiaToolsV2_0.exe
+C:\Progetti\VisualStudio\Tools\TiaTools V2.0\TiaTools V2.0\obj\Debug\TiaToolsV2_0.pdb

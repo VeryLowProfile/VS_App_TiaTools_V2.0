@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TiaTools.Properties {
+namespace TiaToolsV2_0.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace TiaTools.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TiaTools.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TiaToolsV2_0.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -842,6 +842,33 @@ namespace TiaTools.Properties {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a FUNCTION &quot;FC_SM_Abort_Seq&quot; : Void
+        ///{ S7_Optimized_Access := &apos;TRUE&apos; }
+        ///VERSION : 0.1
+        ///   VAR_INPUT 
+        ///      SMN : Int;
+        ///   END_VAR
+        ///
+        ///
+        ///BEGIN
+        ///	//********************************************************************//
+        ///	//Name: FC_SM_Abort
+        ///	//Version: x.x
+        ///	//Description: FC_SM_Abort
+        ///	//Developer: Topcast
+        ///	//********************************************************************//
+        ///	
+        ///	//UTILIZZO
+        ///	//********************************************************************//
+        ///	//Definire per ogni macchina a stati l [stringa troncata]&quot;;.
+        /// </summary>
+        internal static string FC_SM_Abort_Seq {
+            get {
+                return ResourceManager.GetString("FC_SM_Abort_Seq", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a FUNCTION &quot;FC_SM_Call&quot; : Void
         ///{ S7_Optimized_Access := &apos;TRUE&apos; }
         ///VERSION : 0.1
@@ -875,20 +902,18 @@ namespace TiaTools.Properties {
         ///   END_VAR
         ///
         ///   VAR_IN_OUT 
-        ///      MsgPause : Bool;
         ///      MsgStop : Bool;
+        ///      MsgPause : Bool;
         ///   END_VAR
         ///
         ///
         ///BEGIN
-        ///	
-        ///	//********************************************************************//
-        ///	//Name: FC_SM_Common
-        ///	//Version: x.x
-        ///	//Description: FC_SM_Common
-        ///	//Developer: Topcast
-        ///	//********************************************************************//
-        ///	 [stringa troncata]&quot;;.
+        ///	    //********************************************************************//
+        ///	    //Name: FC_SM_Common
+        ///	    //Version: x.x
+        ///	    //Description: FC_SM_Common
+        ///	    //Developer: Topcast
+        ///	    //**************************************************** [stringa troncata]&quot;;.
         /// </summary>
         internal static string FC_SM_Common {
             get {
@@ -969,26 +994,24 @@ namespace TiaTools.Properties {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a FUNCTION &quot;FC_$PHASE_NAME$&quot; : Void
+        ///   Cerca una stringa localizzata simile a FUNCTION &quot;FC_SM_$SM_NB$_$PHASE_NAME$&quot; : Void
         ///{ S7_Optimized_Access := &apos;TRUE&apos; }
         ///VERSION : 0.1
         ///
         ///BEGIN
         ///	//********************************************************************//
-        ///	//Name: FC_$PHASE_NAME$
+        ///	//Name: &quot;FC_SM_$SM_NB$_$PHASE_NAME$&quot;
         ///	//Version: x.x
-        ///	//Description: FC_$PHASE_NAME$
+        ///	//Description: &quot;FC_SM_$SM_NB$_$PHASE_NAME$&quot;
         ///	//Developer: Topcast
         ///	//********************************************************************//
         ///
         ///	//Step Name 
-        ///	&quot;DB_SM&quot;.SM[$SM_NB$].Status.StepName := &apos;$PHASE_NAME$&apos;;
+        ///	&quot;DB_SM&quot;.SM[$SM_NB$].Status.StepName := &apos;SM_$SM_NB$_$PHASE_NAME$&apos;;
         ///	
         ///	//Step Logic
         ///	(*Add Phase Logic Here*)
-        ///	
-        ///	//Reset Hmi Controls
-        ///	(*Reset Hmi Controls He [stringa troncata]&quot;;.
+        ///	        /// [stringa troncata]&quot;;.
         /// </summary>
         internal static string FC_SM_Phase {
             get {
@@ -1024,11 +1047,11 @@ namespace TiaTools.Properties {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a         //$PHASE_NAME$
+        ///   Cerca una stringa localizzata simile a         //SM_$SM_NB$_$PHASE_NAME$
         ///        //********************************************************************// 
-        ///    &quot;$PHASE_NAME$&quot;:
+        ///    &quot;SM_$SM_NB$_$PHASE_NAME$&quot;:
         ///        
-        ///        &quot;FC_$PHASE_NAME$&quot;();.
+        ///        &quot;FC_SM_$SM_NB$_$PHASE_NAME$&quot;();.
         /// </summary>
         internal static string FC_SM_Step {
             get {
@@ -1118,21 +1141,38 @@ namespace TiaTools.Properties {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a TYPE &quot;SM_COMMANDS&quot;
+        ///   Cerca una stringa localizzata simile a TYPE &quot;Sm_COMMANDS&quot;
         ///VERSION : 0.1
         ///   STRUCT
-        ///      Start : Bool;   // Trigger che mette in play la macchina a stati
-        ///      Pause : Bool;   // Trigger che mette in pausa la macchina a stati
-        ///      Stop : Bool;   // Trigger che mette in pausa la macchina a stati
-        ///      Reset : Bool;   // Trigger che resetta la macchina a stati
+        ///      Start : Bool;
+        ///      Pause : Bool;
+        ///      Stop : Bool;
+        ///      Reset : Bool;
+        ///      Abort : Bool;
         ///   END_STRUCT;
         ///
         ///END_TYPE
         ///
-        ///TYPE &quot;SM_FLAGS&quot;
+        ///TYPE &quot;Sm_FLAGS&quot;
         ///VERSION : 0.1
         ///   STRUCT
-        ///      Release : Bool;   // Flag da utilizzare nel primo step della macchina a stati, si utilizza per interpola [stringa troncata]&quot;;.
+        ///      Release : Bool;
+        ///      Restart : Bool;
+        ///      Degraded : Bool;
+        ///   END_STRUCT;
+        ///
+        ///END_TYPE
+        ///
+        ///TYPE &quot;Sm_STATUS&quot;
+        ///VERSION : 0.1
+        ///   STRUCT
+        ///      Busy : Bool;
+        ///      StepName : String;
+        ///      StatusName : String;
+        ///      StepNb : Int;
+        ///      SubStepNb : Int;
+        ///      LastStepNb : Int;
+        ///  [stringa troncata]&quot;;.
         /// </summary>
         internal static string SM_Types {
             get {

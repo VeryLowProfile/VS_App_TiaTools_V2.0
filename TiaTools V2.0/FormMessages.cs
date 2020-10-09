@@ -4,9 +4,8 @@ using System.Windows.Forms;
 using System.IO;
 using System.Data;
 using Excel = Microsoft.Office.Interop.Excel;
-using System.Drawing;
 
-namespace TiaTools
+namespace TiaToolsV2_0
 {
     public partial class FormMessages : Form
     {
@@ -246,18 +245,18 @@ namespace TiaTools
                     StreamWriter FC_Msg_Handler = new StreamWriter(filePath + @"\FC_Msg_Handler.scl", false);
 
                     //Body
-                    FC_Msg_Handler.Write(TiaTools.Properties.Resources.FC_Msg_Handler_Begin);
+                    FC_Msg_Handler.Write(TiaToolsV2_0.Properties.Resources.FC_Msg_Handler_Begin);
                     FC_Msg_Handler.Write("\n");
                     if (checkBoxDefStore.Checked)
                     {
-                        FC_Msg_Handler.Write(TiaTools.Properties.Resources.FC_Msg_Handler_Body_Store);
+                        FC_Msg_Handler.Write(TiaToolsV2_0.Properties.Resources.FC_Msg_Handler_Body_Store);
                     }
                     if (checkBoxDefNone.Checked)
                     {
-                        FC_Msg_Handler.Write(TiaTools.Properties.Resources.FC_Msg_Handler_Body_None);
+                        FC_Msg_Handler.Write(TiaToolsV2_0.Properties.Resources.FC_Msg_Handler_Body_None);
                     }
                     FC_Msg_Handler.Write("\n");
-                    FC_Msg_Handler.Write(TiaTools.Properties.Resources.FC_Msg_Handler_End);
+                    FC_Msg_Handler.Write(TiaToolsV2_0.Properties.Resources.FC_Msg_Handler_End);
 
                     FC_Msg_Handler.Close();
                     FC_Msg_Handler.Dispose();
@@ -271,7 +270,7 @@ namespace TiaTools
                     StreamWriter FC_Msg_Config = new StreamWriter(filePath + @"\FC_Msg_Config.scl", false);
 
                     //Body
-                    FC_Msg_Config.Write(TiaTools.Properties.Resources.FC_Msg_Config_Begin.Replace("$WORD_NUMBER$", WordNb.ToString()).Replace("$MSG_TOT_NUMBER$", MsgNb.ToString()).Replace("$SM_TOT$", SMNb.ToString()));
+                    FC_Msg_Config.Write(TiaToolsV2_0.Properties.Resources.FC_Msg_Config_Begin.Replace("$WORD_NUMBER$", WordNb.ToString()).Replace("$MSG_TOT_NUMBER$", MsgNb.ToString()).Replace("$SM_TOT$", SMNb.ToString()));
                     FC_Msg_Config.Write("\n");
                     foreach (DataRow row in dataTable.Rows)
                     {
@@ -283,14 +282,14 @@ namespace TiaTools
                                 if ((checkBoxDefStore.Checked & row["Msg Reaction SM " + i].ToString() != "STORE") || (checkBoxDefNone.Checked & row["Msg Reaction SM " + i].ToString() != "NONE"))
                                 {
                                     FC_Msg_Config.Write("\n");
-                                    FC_Msg_Config.Write(TiaTools.Properties.Resources.FC_Msg_Config_Body.Replace("$MSG_TEXT$", row["Msg Text it"].ToString()).Replace("$MSG_DEVICE$", row["Device it"].ToString()).Replace("$MSG_NUMBER$", row["Nb"].ToString()).Replace("$MSG_REACTION$", row["Msg Reaction SM " + i].ToString()).Replace("$SM_NUMBER$", i.ToString()));                                  
+                                    FC_Msg_Config.Write(TiaToolsV2_0.Properties.Resources.FC_Msg_Config_Body.Replace("$MSG_TEXT$", row["Msg Text it"].ToString()).Replace("$MSG_DEVICE$", row["Device it"].ToString()).Replace("$MSG_NUMBER$", row["Nb"].ToString()).Replace("$MSG_REACTION$", row["Msg Reaction SM " + i].ToString()).Replace("$SM_NUMBER$", i.ToString()));                                  
                                 }
                             }
                         }
                     }
 
                     FC_Msg_Config.Write("\n");
-                    FC_Msg_Config.Write(TiaTools.Properties.Resources.FC_Msg_Config_End);
+                    FC_Msg_Config.Write(TiaToolsV2_0.Properties.Resources.FC_Msg_Config_End);
 
                     FC_Msg_Config.Close();
                     FC_Msg_Config.Dispose();
@@ -304,12 +303,12 @@ namespace TiaTools
                     StreamWriter FC_Msg_Trigger = new StreamWriter(filePath + @"\FC_Msg_Trigger.scl", false);
 
                     //Body
-                    FC_Msg_Trigger.Write(TiaTools.Properties.Resources.FC_Msg_Trigger_Begin);
+                    FC_Msg_Trigger.Write(TiaToolsV2_0.Properties.Resources.FC_Msg_Trigger_Begin);
                     foreach (DataRow row in dataTable.Rows)
                     {
                         if (!row["Device it"].ToString().Contains("SPARE"))
                         {
-                            FC_Msg_Trigger.Write(TiaTools.Properties.Resources.FC_Msg_Trigger_Body.Replace("$MSG_TEXT$", row["Msg Text it"].ToString()).Replace("$MSG_DEVICE$", row["Device it"].ToString()).Replace("$MSG_NUMBER$", row["Nb"].ToString()));
+                            FC_Msg_Trigger.Write(TiaToolsV2_0.Properties.Resources.FC_Msg_Trigger_Body.Replace("$MSG_TEXT$", row["Msg Text it"].ToString()).Replace("$MSG_DEVICE$", row["Device it"].ToString()).Replace("$MSG_NUMBER$", row["Nb"].ToString()));
                             FC_Msg_Trigger.Write("\n");
                         }
                     }
@@ -327,7 +326,7 @@ namespace TiaTools
                     StreamWriter DB_Msg = new StreamWriter(filePath + @"\DB_Msg.db", false);
 
                     //Body
-                    DB_Msg.Write(TiaTools.Properties.Resources.DB_Msg);
+                    DB_Msg.Write(TiaToolsV2_0.Properties.Resources.DB_Msg);
 
                     DB_Msg.Close();
                     DB_Msg.Dispose();
@@ -343,12 +342,12 @@ namespace TiaTools
                     //Body
                     if (checkBoxDefNone.Checked)
                     {
-                        Msg_Types.Write(TiaTools.Properties.Resources.Msg_Types.Replace("$DEFAULT_REACTION$", 0.ToString()).Replace("$ARRAY_LENGHT$", (SMNb + 1).ToString()).Replace("$SM_TOT$", SMNb.ToString()).Replace("$MSG_NUMBER$", MsgNb.ToString()).Replace("$WORD_NUMBER$", WordNb.ToString()));
+                        Msg_Types.Write(TiaToolsV2_0.Properties.Resources.Msg_Types.Replace("$DEFAULT_REACTION$", 0.ToString()).Replace("$ARRAY_LENGHT$", (SMNb + 1).ToString()).Replace("$SM_TOT$", SMNb.ToString()).Replace("$MSG_NUMBER$", MsgNb.ToString()).Replace("$WORD_NUMBER$", WordNb.ToString()));
 
                     }
                     if (checkBoxDefStore.Checked)
                     {
-                        Msg_Types.Write(TiaTools.Properties.Resources.Msg_Types.Replace("$DEFAULT_REACTION$", 1.ToString()).Replace("$ARRAY_LENGHT$", (SMNb + 1).ToString()).Replace("$SM_TOT$", SMNb.ToString()).Replace("$MSG_NUMBER$", MsgNb.ToString()).Replace("$WORD_NUMBER$", WordNb.ToString()));
+                        Msg_Types.Write(TiaToolsV2_0.Properties.Resources.Msg_Types.Replace("$DEFAULT_REACTION$", 1.ToString()).Replace("$ARRAY_LENGHT$", (SMNb + 1).ToString()).Replace("$SM_TOT$", SMNb.ToString()).Replace("$MSG_NUMBER$", MsgNb.ToString()).Replace("$WORD_NUMBER$", WordNb.ToString()));
                     }
 
                     Msg_Types.Close();
@@ -363,7 +362,7 @@ namespace TiaTools
                     StreamWriter FC_Msg_Store_Sql = new StreamWriter(filePath + @"\FC_Msg_Store_Sql.scl", false);
 
                     //Body
-                    FC_Msg_Store_Sql.Write(TiaTools.Properties.Resources.FC_Msg_Store_Sql);
+                    FC_Msg_Store_Sql.Write(TiaToolsV2_0.Properties.Resources.FC_Msg_Store_Sql);
 
                     FC_Msg_Store_Sql.Close();
                     FC_Msg_Store_Sql.Dispose();
@@ -377,7 +376,7 @@ namespace TiaTools
                     StreamWriter FC_Msg_Reaction = new StreamWriter(filePath + @"\FC_Msg_Reaction.scl", false);
 
                     //Body
-                    FC_Msg_Reaction.Write(TiaTools.Properties.Resources.FC_Msg_Reaction);
+                    FC_Msg_Reaction.Write(TiaToolsV2_0.Properties.Resources.FC_Msg_Reaction);
 
                     FC_Msg_Reaction.Close();
                     FC_Msg_Reaction.Dispose();

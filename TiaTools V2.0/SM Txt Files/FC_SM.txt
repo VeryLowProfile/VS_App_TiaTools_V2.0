@@ -33,8 +33,8 @@ BEGIN
 	//********************************************************************//
 	"FC_SM_Common"(SMN:=#SMN,
 				   StartPhase:= "$START_PHASE$",
-				   Autostart:= $AUTOSTART$
-				   MsgStop:= "DB_Msg".Msg.MsgReactionCommand[#SMN].Halt,
+				   Autostart:= $AUTOSTART$,
+				   MsgStop:= "DB_Msg".Msg.MsgReactionCommand[#SMN].Stop,
 				   MsgPause:= "DB_Msg".Msg.MsgReactionCommand[#SMN].Pause);
 	
 	//SM body

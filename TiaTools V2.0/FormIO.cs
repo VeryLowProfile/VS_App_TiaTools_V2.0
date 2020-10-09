@@ -3,9 +3,8 @@ using CustomUtility_NET_F;
 using System.Windows.Forms;
 using System.IO;
 using System.Data;
-using Excel = Microsoft.Office.Interop.Excel;
 
-namespace TiaTools
+namespace TiaToolsV2_0
 {
     public partial class FormIO : Form
     {
@@ -94,13 +93,13 @@ namespace TiaTools
                     StreamWriter FC_DI = new StreamWriter(filePathDI + @"\FC_DI.scl", false);
 
                     //FC_Digital_IN Body
-                    FC_DI.Write(TiaTools.Properties.Resources.FC_DI);
+                    FC_DI.Write(TiaToolsV2_0.Properties.Resources.FC_DI);
 
                     foreach (DataRow row in dataTable.Rows)
                     {
                         if (row["Logical Address"].ToString().Contains("I") && !row["Logical Address"].ToString().Contains("W"))
                         {
-                            FC_DI.Write(TiaTools.Properties.Resources.FC_DI_Part.Replace("$VAR_NAME$", row["Name"].ToString()));
+                            FC_DI.Write(TiaToolsV2_0.Properties.Resources.FC_DI_Part.Replace("$VAR_NAME$", row["Name"].ToString()));
                             FC_DI.Write("\n");
                         }
                     }
@@ -118,7 +117,7 @@ namespace TiaTools
                     {
                         if (row["Logical Address"].ToString().Contains("I") && !row["Logical Address"].ToString().Contains("W"))
                         {
-                            DB_DI.Write(TiaTools.Properties.Resources.DB_DI.Replace("$VAR_NAME$", row["Name"].ToString()));
+                            DB_DI.Write(TiaToolsV2_0.Properties.Resources.DB_DI.Replace("$VAR_NAME$", row["Name"].ToString()));
                         }
                     }
                     DB_DI.Close();
@@ -130,13 +129,13 @@ namespace TiaTools
                     StreamWriter FC_DI_Config = new StreamWriter(filePathDI + @"\FC_DI_Config.scl", false);
 
                     //FC_Digital_IN_Config Body
-                    FC_DI_Config.Write(TiaTools.Properties.Resources.FC_DI_Config);
+                    FC_DI_Config.Write(TiaToolsV2_0.Properties.Resources.FC_DI_Config);
 
                     foreach (DataRow row in dataTable.Rows)
                     {
                         if (row["Logical Address"].ToString().Contains("I") && !row["Logical Address"].ToString().Contains("W"))
                         {
-                            FC_DI_Config.Write(TiaTools.Properties.Resources.FC_DI_Config_Part.Replace("$VAR_NAME$", row["Name"].ToString()));
+                            FC_DI_Config.Write(TiaToolsV2_0.Properties.Resources.FC_DI_Config_Part.Replace("$VAR_NAME$", row["Name"].ToString()));
                             FC_DI_Config.Write("\n");
                         }
                     }
@@ -159,13 +158,13 @@ namespace TiaTools
                     StreamWriter FC_AI = new StreamWriter(filePathAI + @"\FC_AI.scl", false);
 
                     //FC_Analog_IN Body
-                    FC_AI.Write(TiaTools.Properties.Resources.FC_AI);
+                    FC_AI.Write(TiaToolsV2_0.Properties.Resources.FC_AI);
 
                     foreach (DataRow row in dataTable.Rows)
                     {
                         if (row["Logical Address"].ToString().Contains("I") && row["Logical Address"].ToString().Contains("W"))
                         {
-                            FC_AI.Write(TiaTools.Properties.Resources.FC_AI.Replace("$VAR_NAME$", row["Name"].ToString()));
+                            FC_AI.Write(TiaToolsV2_0.Properties.Resources.FC_AI.Replace("$VAR_NAME$", row["Name"].ToString()));
                             FC_AI.Write("\n");
                         }
                     }
@@ -183,7 +182,7 @@ namespace TiaTools
                     {
                         if (row["Logical Address"].ToString().Contains("I") && row["Logical Address"].ToString().Contains("W"))
                         {
-                            DB_AI.Write(TiaTools.Properties.Resources.DB_AI.Replace("$VAR_NAME$", row["Name"].ToString()));
+                            DB_AI.Write(TiaToolsV2_0.Properties.Resources.DB_AI.Replace("$VAR_NAME$", row["Name"].ToString()));
                         }
                     }
                     DB_AI.Close();
@@ -195,13 +194,13 @@ namespace TiaTools
                     StreamWriter FC_AI_Config = new StreamWriter(filePathAI + @"\FC_AI_Config.scl", false);
 
                     //FC_Digital_IN_Config Body
-                    FC_AI_Config.Write(TiaTools.Properties.Resources.FC_AI_Config);
+                    FC_AI_Config.Write(TiaToolsV2_0.Properties.Resources.FC_AI_Config);
 
                     foreach (DataRow row in dataTable.Rows)
                     {
                         if (row["Logical Address"].ToString().Contains("I") && row["Logical Address"].ToString().Contains("W"))
                         {
-                            FC_AI_Config.Write(TiaTools.Properties.Resources.FC_AI_Config_Part.Replace("$VAR_NAME$", row["Name"].ToString()));
+                            FC_AI_Config.Write(TiaToolsV2_0.Properties.Resources.FC_AI_Config_Part.Replace("$VAR_NAME$", row["Name"].ToString()));
                             FC_AI_Config.Write("\n");
                         }
                     }
@@ -224,13 +223,13 @@ namespace TiaTools
                     StreamWriter FC_DQ = new StreamWriter(filePathDQ + @"\FC_DQ.scl", false);
 
                     //FC_Digital_OUT Body
-                    FC_DQ.Write(TiaTools.Properties.Resources.FC_DQ);
+                    FC_DQ.Write(TiaToolsV2_0.Properties.Resources.FC_DQ);
 
                     foreach (DataRow row in dataTable.Rows)
                     {
                         if (row["Logical Address"].ToString().Contains("Q") && !row["Logical Address"].ToString().Contains("W"))
                         {
-                            FC_DQ.Write(TiaTools.Properties.Resources.FC_DQ_Part.Replace("$VAR_NAME$", row["Name"].ToString()));
+                            FC_DQ.Write(TiaToolsV2_0.Properties.Resources.FC_DQ_Part.Replace("$VAR_NAME$", row["Name"].ToString()));
                             FC_DQ.Write("\n");
                         }
                     }
@@ -248,7 +247,7 @@ namespace TiaTools
                     {
                         if (row["Logical Address"].ToString().Contains("Q") && !row["Logical Address"].ToString().Contains("W"))
                         {
-                            DB_DQ.Write(TiaTools.Properties.Resources.DB_DQ.Replace("$VAR_NAME$", row["Name"].ToString()));
+                            DB_DQ.Write(TiaToolsV2_0.Properties.Resources.DB_DQ.Replace("$VAR_NAME$", row["Name"].ToString()));
                         }
                     }
                     DB_DQ.Close();
@@ -260,13 +259,13 @@ namespace TiaTools
                     StreamWriter FC_DQ_Config = new StreamWriter(filePathDQ + @"\FC_DQ_Config.scl", false);
 
                     //FC_Digital_OUT_Config Body
-                    FC_DQ_Config.Write(TiaTools.Properties.Resources.FC_DQ_Config);
+                    FC_DQ_Config.Write(TiaToolsV2_0.Properties.Resources.FC_DQ_Config);
 
                     foreach (DataRow row in dataTable.Rows)
                     {
                         if (row["Logical Address"].ToString().Contains("Q") && !row["Logical Address"].ToString().Contains("W"))
                         {
-                            FC_DQ_Config.Write(TiaTools.Properties.Resources.FC_DQ_Config_Part.Replace("$VAR_NAME$", row["Name"].ToString()));
+                            FC_DQ_Config.Write(TiaToolsV2_0.Properties.Resources.FC_DQ_Config_Part.Replace("$VAR_NAME$", row["Name"].ToString()));
                             FC_DQ_Config.Write("\n");
                         }
                     }
@@ -289,13 +288,13 @@ namespace TiaTools
                     StreamWriter FC_AQ = new StreamWriter(filePathAQ + @"\FC_AQ.scl", false);
 
                     //FC_Digital_OUT Body
-                    FC_AQ.Write(TiaTools.Properties.Resources.FC_AQ);
+                    FC_AQ.Write(TiaToolsV2_0.Properties.Resources.FC_AQ);
 
                     foreach (DataRow row in dataTable.Rows)
                     {
                         if (row["Logical Address"].ToString().Contains("Q") && row["Logical Address"].ToString().Contains("W"))
                         {
-                            FC_AQ.Write(TiaTools.Properties.Resources.FC_AQ_Part.Replace("$VAR_NAME$", row["Name"].ToString()));
+                            FC_AQ.Write(TiaToolsV2_0.Properties.Resources.FC_AQ_Part.Replace("$VAR_NAME$", row["Name"].ToString()));
                             FC_AQ.Write("\n");
                         }
                     }
@@ -313,7 +312,7 @@ namespace TiaTools
                     {
                         if (row["Logical Address"].ToString().Contains("Q") && row["Logical Address"].ToString().Contains("W"))
                         {
-                            DB_AQ.Write(TiaTools.Properties.Resources.DB_AQ.Replace("$VAR_NAME$", row["Name"].ToString()));
+                            DB_AQ.Write(TiaToolsV2_0.Properties.Resources.DB_AQ.Replace("$VAR_NAME$", row["Name"].ToString()));
                         }
                     }
                     DB_AQ.Close();
@@ -325,13 +324,13 @@ namespace TiaTools
                     StreamWriter FC_AQ_Config = new StreamWriter(filePathAQ + @"\FC_AQ_Config.scl", false);
 
                     //FC_Analog_OUT_Config Body
-                    FC_AQ_Config.Write(TiaTools.Properties.Resources.FC_AQ_Config);
+                    FC_AQ_Config.Write(TiaToolsV2_0.Properties.Resources.FC_AQ_Config);
 
                     foreach (DataRow row in dataTable.Rows)
                     {
                         if (row["Logical Address"].ToString().Contains("Q") && row["Logical Address"].ToString().Contains("W"))
                         {
-                            FC_AQ_Config.Write(TiaTools.Properties.Resources.FC_AQ_Config_Part.Replace("$VAR_NAME$", row["Name"].ToString()));
+                            FC_AQ_Config.Write(TiaToolsV2_0.Properties.Resources.FC_AQ_Config_Part.Replace("$VAR_NAME$", row["Name"].ToString()));
                             FC_AQ_Config.Write("\n");
                         }
                     }
@@ -353,7 +352,7 @@ namespace TiaTools
 
 
                     //Write From Source
-                    IO_Types.Write(TiaTools.Properties.Resources.IO_Types);
+                    IO_Types.Write(TiaToolsV2_0.Properties.Resources.IO_Types);
 
                     //Close Stream
                     IO_Types.Close();
@@ -374,10 +373,10 @@ namespace TiaTools
                     StreamWriter FB_Digital_OUT = new StreamWriter(filePathFB + @"\FB_DQ.scl", false);
 
                     //Write From Source
-                    FB_Analog_IN.Write(TiaTools.Properties.Resources.FB_AI);
-                    FB_Digital_IN.Write(TiaTools.Properties.Resources.FB_DI);
-                    FB_Analog_OUT.Write(TiaTools.Properties.Resources.FB_AQ);
-                    FB_Digital_OUT.Write(TiaTools.Properties.Resources.FB_DQ);
+                    FB_Analog_IN.Write(TiaToolsV2_0.Properties.Resources.FB_AI);
+                    FB_Digital_IN.Write(TiaToolsV2_0.Properties.Resources.FB_DI);
+                    FB_Analog_OUT.Write(TiaToolsV2_0.Properties.Resources.FB_AQ);
+                    FB_Digital_OUT.Write(TiaToolsV2_0.Properties.Resources.FB_DQ);
 
                     //Close Stream
                     FB_Analog_IN.Close();

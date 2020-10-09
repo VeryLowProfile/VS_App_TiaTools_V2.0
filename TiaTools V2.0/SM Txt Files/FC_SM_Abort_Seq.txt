@@ -1,5 +1,5 @@
-﻿FUNCTION "FC_SM_Reset_Seq" : Void
-{ S7_Optimized_Access := 'FALSE' }
+﻿FUNCTION "FC_SM_Abort_Seq" : Void
+{ S7_Optimized_Access := 'TRUE' }
 VERSION : 0.1
    VAR_INPUT 
       SMN : Int;
@@ -8,15 +8,18 @@ VERSION : 0.1
 
 BEGIN
 	//********************************************************************//
-	//Name: FC_SM_Reset_Seq
+	//Name: FC_SM_Abort_Seq
 	//Version: x.x
-	//Description: FC_SM_Reset_Seq
+	//Description: FC_SM_Abort_Seq
 	//Developer: Topcast
 	//********************************************************************//
 	
 	//UTILIZZO
 	//********************************************************************//
-	//Definire per ogni macchina a stati la sequenza delle operazioni da eseguire nella procedura di Reset
-
+	//Definire per ogni macchina a stati la sequenza delle operazioni da eseguire nella procedura di Abort
+	
 	CASE #SMN OF
+
+	        
+
 

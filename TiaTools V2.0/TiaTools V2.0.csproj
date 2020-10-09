@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{38AB7A7A-4A6C-4602-8974-132E9EC9AA34}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>TiaTools</RootNamespace>
-    <AssemblyName>TiaTools</AssemblyName>
+    <RootNamespace>TiaToolsV2_0</RootNamespace>
+    <AssemblyName>TiaToolsV2_0</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -159,6 +159,7 @@
     <Content Include="Msg Txt Files\FC_Msg_Trigger_Body.txt" />
     <Content Include="Msg Txt Files\Msg_Types.txt" />
     <Content Include="SM Txt Files\DB_SM.txt" />
+    <Content Include="SM Txt Files\FC_SM_Abort_Seq.txt" />
     <Content Include="SM Txt Files\FC_SM_Hmi_Step.txt" />
     <Content Include="SM Txt Files\FC_SM_Hmi.txt" />
     <Content Include="SM Txt Files\FC_SM.txt" />

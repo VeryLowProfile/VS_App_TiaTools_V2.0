@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Data;
 using System.IO;
-using System.Reflection;
 using System.Windows.Forms;
 using CustomUtility_NET_F;
 
-namespace TiaTools
+namespace TiaToolsV2_0
 {
     public partial class FormStateMachines : Form
     {
@@ -213,7 +212,7 @@ namespace TiaTools
                         try
                         {
                             //Write File Begin From Source
-                            FC_SM_Common.Write(TiaTools.Properties.Resources.FC_SM_Common);
+                            FC_SM_Common.Write(TiaToolsV2_0.Properties.Resources.FC_SM_Common);
 
                             //Close Stream
                             FC_SM_Common.Close();
@@ -233,7 +232,7 @@ namespace TiaTools
                         try
                         {
                             //Write File Begin From Source
-                            FC_SM_Pause_Seq.Write(TiaTools.Properties.Resources.FC_SM_Pause_Seq);
+                            FC_SM_Pause_Seq.Write(TiaToolsV2_0.Properties.Resources.FC_SM_Pause_Seq);
 
                             //Write File End
                             for (int i = 1; i <= Int32.Parse(textBoxSMTotNb.Text); i++)
@@ -265,7 +264,7 @@ namespace TiaTools
                         try
                         {
                             //Write File Begin From Source
-                            FC_SM_Stop_Seq.Write(TiaTools.Properties.Resources.FC_SM_Stop_Seq);
+                            FC_SM_Stop_Seq.Write(TiaToolsV2_0.Properties.Resources.FC_SM_Stop_Seq);
 
                             //Write File End
                             for (int i = 1; i <= Int32.Parse(textBoxSMTotNb.Text); i++)
@@ -297,7 +296,7 @@ namespace TiaTools
                         try
                         {
                             //Write File Begin From Source
-                            FC_SM_Reset_Seq.Write(TiaTools.Properties.Resources.FC_SM_Reset_Seq);
+                            FC_SM_Reset_Seq.Write(TiaToolsV2_0.Properties.Resources.FC_SM_Reset_Seq);
 
                             //Write File End
                             for (int i = 1; i <= Int32.Parse(textBoxSMTotNb.Text); i++)
@@ -322,6 +321,39 @@ namespace TiaTools
                         }
                         #endregion
 
+                        #region
+                        //Write File With StreamWriter
+                        StreamWriter FC_SM_Abort_Seq = new StreamWriter(filePathCommon + @"\FC_SM_Abort_Seq.scl", false);
+
+                        try
+                        {
+                            //Write File Begin From Source
+                            FC_SM_Abort_Seq.Write(TiaToolsV2_0.Properties.Resources.FC_SM_Abort_Seq);
+
+                            //Write File End
+                            for (int i = 1; i <= Int32.Parse(textBoxSMTotNb.Text); i++)
+                            {
+                                FC_SM_Abort_Seq.WriteLine("\t" + "\t" + "\t" + "//ABORT SEQUENCE SM " + i);
+                                FC_SM_Abort_Seq.WriteLine("\t" + "\t" + "\t" + "//********************************************************************//");
+                                FC_SM_Abort_Seq.WriteLine("\t" + "\t" + i + ":");
+                                FC_SM_Abort_Seq.WriteLine("\t" + "\t" + "\t" + "\"" + "DB_SM" + "\"" + ".Sm[#SMN] := " + "\"" + "DB_SM" + "\"" + ".Sm[0];");
+                                FC_SM_Abort_Seq.Write("\n");
+                            }
+                            FC_SM_Abort_Seq.WriteLine("END_CASE;");
+                            FC_SM_Abort_Seq.WriteLine("END_FUNCTION");
+
+                            //Close Stream
+                            FC_SM_Abort_Seq.Close();
+                            FC_SM_Abort_Seq.Dispose();
+                        }
+                        catch (Exception ex)
+                        {
+                            //display error message
+                            MessageBox.Show("Exception: " + ex.Message);
+                        }
+                        #endregion
+
+
                         #region FC_SM_Call.scl
                         //Write File With StreamWriter
                         StreamWriter FC_SM_Call = new StreamWriter(filePathCommon + @"\FC_SM_Call.scl", false);
@@ -329,7 +361,7 @@ namespace TiaTools
                         try
                         {
                             //Write File Begin From Source
-                            FC_SM_Call.Write(TiaTools.Properties.Resources.FC_SM_Call);
+                            FC_SM_Call.Write(TiaToolsV2_0.Properties.Resources.FC_SM_Call);
 
                             //Write File End
                             for (int i = 1; i <= Int32.Parse(textBoxSMTotNb.Text); i++)
@@ -376,7 +408,7 @@ namespace TiaTools
                         try
                         {
                             //Write File Begin From Source
-                            DB_SM.Write(TiaTools.Properties.Resources.DB_SM.Replace("$SM_TOT_NB$", textBoxSMTotNb.Text));
+                            DB_SM.Write(TiaToolsV2_0.Properties.Resources.DB_SM.Replace("$SM_TOT_NB$", textBoxSMTotNb.Text));
 
                             //Close Stream
                             DB_SM.Close();
@@ -458,12 +490,12 @@ namespace TiaTools
                                 try
                                 {
                                     //Write File Begin From Source
-                                    FC_SM.Write(TiaTools.Properties.Resources.FC_SM.Replace("$SM_NAME$", textBoxSMName.Text).Replace("$SM_NB$", textBoxSMNb.Text).Replace("$START_PHASE$", firstPhase).Replace("$AUTOSTART$", autostart));
+                                    FC_SM.Write(TiaToolsV2_0.Properties.Resources.FC_SM.Replace("$SM_NAME$", textBoxSMName.Text).Replace("$SM_NB$", textBoxSMNb.Text).Replace("$START_PHASE$", firstPhase).Replace("$AUTOSTART$", autostart));
 
                                     //Write Steps From Source
                                     foreach (DataRow row in dataTable.Rows)
                                     {
-                                        FC_SM.Write(TiaTools.Properties.Resources.FC_SM_Step.Replace("$PHASE_NAME$", row["Phase Name"].ToString()));
+                                        FC_SM.Write(TiaToolsV2_0.Properties.Resources.FC_SM_Step.Replace("$SM_NB$", textBoxSMNb.Text).Replace("$PHASE_NAME$", row["Phase Name"].ToString()));
                                         FC_SM.Write("\n");
                                         FC_SM.Write("\n");
                                     }
@@ -501,7 +533,7 @@ namespace TiaTools
                     { 
                         if (row["Create Phase FC"].ToString() == "True")
                         {
-                            FC_Phases.Write(TiaTools.Properties.Resources.FC_SM_Phase.Replace("$SM_NB$", textBoxSMNb.Text).Replace("$PHASE_NAME$", row["Phase Name"].ToString()));
+                            FC_Phases.Write(TiaToolsV2_0.Properties.Resources.FC_SM_Phase.Replace("$SM_NB$", textBoxSMNb.Text).Replace("$PHASE_NAME$", row["Phase Name"].ToString()));
                             FC_Phases.Write("\n");
                             FC_Phases.Write("\n");
                         }
@@ -524,7 +556,7 @@ namespace TiaTools
                     StreamWriter SM_types = new StreamWriter(filepathTypes + @"\SM_Types.udt", false);
 
                     //Write From Source
-                    SM_types.Write(TiaTools.Properties.Resources.SM_Types);
+                    SM_types.Write(TiaToolsV2_0.Properties.Resources.SM_Types);
 
                     //Close Stream
                     SM_types.Close();
@@ -555,12 +587,12 @@ namespace TiaTools
                             StreamWriter FC_Hmi = new StreamWriter(filepathHmi + @"\FC_Hmi_SM_" + textBoxSMName.Text + ".scl", false);
 
                             //Write File Begin From Source
-                            FC_Hmi.Write(TiaTools.Properties.Resources.FC_SM_Hmi.Replace("$SM_NAME$", textBoxSMName.Text).Replace("$SM_NB$", textBoxSMNb.Text));
+                            FC_Hmi.Write(TiaToolsV2_0.Properties.Resources.FC_SM_Hmi.Replace("$SM_NAME$", textBoxSMName.Text).Replace("$SM_NB$", textBoxSMNb.Text));
 
                             //Write Steps From Source
                             foreach (DataRow row in dataTable.Rows)
                             {
-                                FC_Hmi.Write(TiaTools.Properties.Resources.FC_SM_Hmi_Step.Replace("$PHASE_NAME$", row["Phase Name"].ToString()));
+                                FC_Hmi.Write(TiaToolsV2_0.Properties.Resources.FC_SM_Hmi_Step.Replace("$PHASE_NAME$", row["Phase Name"].ToString()));
                                 FC_Hmi.Write("\n");
                                 FC_Hmi.Write("\n");
                             }
