@@ -1,0 +1,21 @@
+﻿FUNCTION "FC_AQ_Config" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	//********************************************************************//
+	//Name: FC_AQ_Config
+	//Version: x.x
+	//Description: FC_AQ_Config
+	//Developer: Topcast
+	//********************************************************************//
+	
+	//ESEMPIO DI CONFIGURAZIONE
+	//********************************************************************//
+	// "AQ_USCITA_ANALOGICA.CONFIG.Name := 4226; Indice Dell'elenco testi per visualizzazione nome variabile su HMI
+	// "AQ_USCITA_ANALOGICA".CONFIG.MUnit := 0; Indice dell'elenco testi per visualizare unità di misura su HMI
+	// "AQ_USCITA_ANALOGICA".CONFIG.HighUnscaleLimit := 0; Valore di processo che deve corrispondere al massimo valore raggiungibile dall'uscita analogica (se per esempio si vuole controllare un'uscita come percentuale questo valore sarà 100, in caso di controllo in tensione corrisponderà a 10V in caso di corrente a 20mA)
+	// "AQ_USCITA_ANALOGICA".CONFIG.LowUnscaleLimit := 0; Valore di processo che deve corrispondere al minimo valore raggiungibile dall'uscita analogica (se per esempio si vuole controllare un'uscita come percentuale questo valore sarà 0, in caso di controllo in tensione corrisponderà a 0V in caso di corrente a 4mA)
+	// "AQ_USCITA_ANALOGICA".CONFIG.IsBipolar := 0; Se 1 allora Si presume che il valore nel parametro IN sia bipolare e si collochi in un campo di valori compreso tra -27648 e 27648
+	
+	

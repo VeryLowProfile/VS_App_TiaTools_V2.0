@@ -1,0 +1,25 @@
+﻿FUNCTION "FC_DI" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	//********************************************************************//
+	//Name: FC_DI
+	//Version: x.x
+	//Description: FI_DI
+	//Developer: Topcast
+	//********************************************************************//
+	
+	//ELESMPIO DI RCHIAMO FB_DI
+	//********************************************************************//
+	//Si considera un ingresso digitale definito sulla tabella delle variabili PLC come "INGRESSO_DIGITALE" al quale può essere assegnata qualsiasi bit di ingresso, questo non è importante.
+	//Si richiama il blocco FB_Digital_IN e si genera il db di istanza semplice con nome DI_INGRESSO_DIGITALE, il codice PLC prenderà questa Forma:
+	//
+	//"DI_INGRESSO_DIGITALE"();
+	//
+	//Tra le parentesi si inserisce il nome della variabile dichiarata sulla tabella delle variabili PLC in questo caso "INGRESSO_DIGITALE", il codice prende la seguente forma:
+	//
+	//"DI_INGRESSO_DIGITALE"("INGRESSO_DIGITALE");
+	//
+	//Il richiamo è adesso completo
+	

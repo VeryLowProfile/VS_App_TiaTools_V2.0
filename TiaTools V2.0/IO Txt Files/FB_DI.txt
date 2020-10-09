@@ -1,0 +1,74 @@
+﻿FUNCTION_BLOCK "FB_DI"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Signal : Bool;
+   END_VAR
+
+   VAR 
+      STATUS : "DI_STATUS";
+      CONFIG { S7_SetPoint := 'False'} : "DI_CONFIG";
+      AUX { S7_SetPoint := 'False'} : "DI_AUX";
+      HMI : "HMI_IO";
+   END_VAR
+
+
+BEGIN
+	//********************************************************************//
+	//Name: FB_DI
+	//Version: x.x
+	//Description: FB_DI
+	//Developer: Topcast
+	//********************************************************************//
+	
+	//PARAMETRI
+	//********************************************************************//
+	//Signal: bit di ingresso dichiarato sulla tabella delle variabili PLC
+	
+	//ESEMPIO DI UTILIZZO
+	//********************************************************************//
+	//Dopo aver richiamato correttamente il blocco ed avere eseguito la configurazione si può accedere alla varei funzioni nel seguente modo.
+	//Si fa riferimento alla variabile di esempio "INGRESSO_DIGITALE" usata negli esempi precedenti
+	//
+	//Lettura dello stato attuale dell'ingresso
+	//MyStatus := "DI_INGRESSO_DIGITALE".Status
+	//
+	//Interrogazione del fronte di salita dell'ingresso
+	//IF "DI_INGRESSO_DIGITALE".R_Status THEN (R_Status fornisce il fronte di salita dell'ingresso)
+	//
+	//  Some PLC code ....
+	//
+	//END_IF;
+	//  
+	//Interrogazione del fronte di discesa dell'ingresso
+	//IF "DI_INGRESSO_DIGITALE".F_Status THEN (F_Status fornisce il fronte di discesa dell'ingresso)
+	//
+	//  Some PLC code ....
+	//
+	//END_IF;
+	
+	//Debounce
+	//********************************************************************//
+	#AUX.#T_Debounce(IN := #Signal,
+	                 PT := #CONFIG.DebounceTime);
+	
+	//Status
+	//********************************************************************//
+	#STATUS.Status := #AUX.#T_Debounce.Q;
+	
+	//Edges
+	//********************************************************************//
+	//R
+	#STATUS.R_Status := #AUX.R_Aux <> #STATUS.Status;
+	#AUX.R_Aux := #STATUS.Status;
+	
+	//F
+	#STATUS.F_Status := #AUX.F_Aux <> #STATUS.Status;
+	#AUX.F_Aux := #STATUS.Status;
+	
+	//Hmi
+	//********************************************************************//
+	#HMI.Status := #STATUS.Status;
+	
+END_FUNCTION_BLOCK
+

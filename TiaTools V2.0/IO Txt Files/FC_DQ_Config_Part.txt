@@ -1,0 +1,4 @@
+//DQ_$VAR_NAME$
+//********************************************************************//
+"DQ_$VAR_NAME$".CONFIG.OFFDelay := T#0MS;
+"DQ_$VAR_NAME$".CONFIG.OnDelay := T#0MS;

@@ -1,0 +1,76 @@
+﻿FUNCTION_BLOCK "FB_AQ"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_OUTPUT 
+      Signal : Int;
+   END_VAR
+
+   VAR 
+      COMMAND : "AQ_COMMAND";
+      CONFIG { S7_SetPoint := 'False'} : "AQ_CONFIG";
+      AUX { S7_SetPoint := 'False'} : "AQ_AUX";
+      HMI : "HMI_IO";
+   END_VAR
+
+
+BEGIN
+	//********************************************************************//
+	//Name: FB_AO
+	//Version: 0.1
+	//Description: FB_AO
+	//Developer: Topcast
+	//********************************************************************//
+	
+	//PARAMETRI
+	//********************************************************************//
+	//Signal: Word di uscite di tipo "int" dichiarata sulla tabella delle variabili PLC
+	
+	//ESEMPIO DI UTILIZZO
+	//********************************************************************//
+	//Dopo aver richiamato correttamente il blocco ed avere eseguito la configurazione si può accedere alla varei funzioni nel seguente modo.
+	//Si fa riferimento alla variabile di esempio "USCITA_ANALOGICA" usata negli esempi precedenti
+	//
+	//Impostazione del valore di uscita
+	//AO_USCITA_ANALOGICA.Command := Valore che si desidera assegnare all'uscita (questo valore deve essere di tipo "Real", se il valore assegnato è oltre i limiti impostati in configurazione questo verrà arrotondato al valore massimo o minimo a seconda dei casi)
+	
+	//Manual Command
+	//********************************************************************//
+	IF #COMMAND.Manual THEN
+	    IF #COMMAND.ManualEnable THEN
+	        IF #COMMAND.Command <> #HMI.Command THEN
+	            #COMMAND.Command := #HMI.Command;
+	        END_IF;
+	    END_IF;
+	END_IF;
+	
+	//Command Limit
+	//********************************************************************//
+	IF #COMMAND.Command > #CONFIG.HighUnscaleLimit THEN
+	    #COMMAND.Command := #CONFIG.HighUnscaleLimit;
+	END_IF;
+	
+	IF #COMMAND.Command < #CONFIG.LowUnscaleLimit THEN
+	    #COMMAND.Command := #CONFIG.LowUnscaleLimit;
+	END_IF;
+	
+	//Output
+	//********************************************************************//
+	#AUX.#UNSCALE_RET_VAL := UNSCALE(IN := #COMMAND.Command,
+	                            HI_LIM := #CONFIG.HighUnscaleLimit,
+	                            LO_LIM := #CONFIG.LowUnscaleLimit,
+	                            BIPOLAR := #CONFIG.IsBipolar,
+	                            OUT => #Signal);
+	
+	//Hmi
+	//********************************************************************//
+	#HMI.RawValue := #Signal;
+	#HMI.Value := #COMMAND.Command;
+	#HMI.Manual := #COMMAND.Manual;
+	#HMI.ManualEnable := #COMMAND.ManualEnable;
+	IF NOT #COMMAND.Manual AND NOT #COMMAND.ManualEnable THEN
+	    #HMI.Command := #COMMAND.Command;
+	END_IF;
+	
+	
+END_FUNCTION_BLOCK
+

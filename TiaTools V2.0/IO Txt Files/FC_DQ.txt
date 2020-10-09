@@ -1,0 +1,25 @@
+﻿FUNCTION "FC_DQ" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	//********************************************************************//
+	//Name: FC_DQ
+	//Version: x.x
+	//Description: FC_DQ
+	//Developer: Topcast
+	//********************************************************************//
+	
+	//ELESMPIO DI RCHIAMO FB_DQ
+	//********************************************************************//
+	//Si considera una uscita digitale definito sulla tabella delle variabili PLC come "USCITA_DIGITALE" al quale può essere assegnata qualsiasi bit di uscita, questo non è importante.
+	//Si richiama il blocco FB_Digital_OUT e si genera il db di istanza semplice con nome DI_USCITA_DIGITALE, il codice PLC prenderà questa Forma:
+	//
+	//"DQ_USCITA_DIGITALE"();
+	//
+	//Tra le parentesi si inserisce il nome della variabile dichiarata sulla tabella delle variabili PLC in questo caso "USCITA_DIGITALE", il codice prende la seguente forma:
+	//
+	//"DQ_USCITA_DIGITALE"("USCITA_DIGITALE");
+	//
+	//Il richiamo è adesso completo
+	

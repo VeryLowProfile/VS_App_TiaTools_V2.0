@@ -1,0 +1,17 @@
+﻿FUNCTION "FC_DQ_Config" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	//********************************************************************//
+	//Name: FC_DQ_Config
+	//Version: x.x
+	//Description: FC_DQ_Config
+	//Developer: Topcast
+	//********************************************************************//
+	
+	//ESEMPIO DI CONFIGURAZIONE
+	//********************************************************************//
+	// "DQ_USCITA_DIGITALE".CONFIG.OFFDelay := T#0MS; Tempo di ritardo sull'azionamento
+	// "DQ_USCITA_DIGITALE".CONFIG.OnDelay := T#0MS; Tempo di ritardo sul rilascio
+	

@@ -1,0 +1,66 @@
+﻿TYPE "SM_COMMANDS"
+VERSION : 0.1
+   STRUCT
+      Start : Bool;   // Trigger che mette in play la macchina a stati
+      Pause : Bool;   // Trigger che mette in pausa la macchina a stati
+      Stop : Bool;   // Trigger che mette in pausa la macchina a stati
+      Reset : Bool;   // Trigger che resetta la macchina a stati
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "SM_FLAGS"
+VERSION : 0.1
+   STRUCT
+      Release : Bool;   // Flag da utilizzare nel primo step della macchina a stati, si utilizza per interpolare vari processi, viene settato da un'altra macchina oppure da altre condizioni, deve essere resettato dalla macchina a stati corrente
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "SM_STATUS"
+VERSION : 0.1
+   STRUCT
+      Busy : Bool;   // Se 1 indica che la macchina a stati ÃƒÂ¨ avviata
+      StepName : String;   // Nome dello step attuale
+      StatusName : String;   // Nome dello stato attuale
+      StepNb : Int;   // Step attuale in cui si trova la macchina
+      SubStepNb : Int;   // SubStep in cui si trova la macchina, se usato alla fine dello step va resettato
+      LastStepNb : Int;   // Memoria che tiene traccia dello step attuale della macchina, serve a ripartire in caso di pausa
+      LastSubStepNb : Int;   // Memoria che tiene traccia dello substep attuale della macchina, serve a ripartire in caso di pausa
+      Status : Int;   // Intero che indica lo stato attuale della macchina
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "SM_GEN"
+VERSION : 0.1
+   STRUCT
+      Status : "SM_STATUS";
+      Command : "SM_COMMANDS";
+      Flags : "SM_FLAGS";
+      Hmi : "HMI_SM";
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "HMI_SM"
+VERSION : 0.1
+   STRUCT
+      CommandStart : Bool;
+      CommandPause : Bool;
+      CommandStop : Bool;
+      CommandReset : Bool;
+      CommandAbort : Bool;
+      CommandRelease : Bool;
+      StatusPlay : Bool;
+      StatusPause : Bool;
+      StatusStop : Bool;
+      StatusReset : Bool;
+      StatusAbort : Bool;
+      StepNb : Int;
+      SubStepNb : Int;
+      StepName : String;
+      StatusName : String;
+   END_STRUCT;
+
+END_TYPE

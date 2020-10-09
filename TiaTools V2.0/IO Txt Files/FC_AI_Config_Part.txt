@@ -1,0 +1,14 @@
+	//AI_$VAR_NAME$
+	//********************************************************************//
+	"AI_$VAR_NAME$".CONFIG.HighScaleValue := 0;
+	"AI_$VAR_NAME$".CONFIG.LowScaleValue := 0;
+	"AI_$VAR_NAME$".CONFIG.HighLimit := 0;
+	"AI_$VAR_NAME$".CONFIG.LowLimit := 0;
+	"AI_$VAR_NAME$".CONFIG.ManualCompValue := 0;
+	"AI_$VAR_NAME$".CONFIG.ManualScalingValue := 0;
+	"AI_$VAR_NAME$".CONFIG.AlarmDelay := T#5S;
+	"AI_$VAR_NAME$".CONFIG.IsBipolar := 0;
+	"AI_$VAR_NAME$".CONFIG.DoNotScale := 0;
+	"AI_$VAR_NAME$".CONFIG.AddManualCompensation := 0;
+	"AI_$VAR_NAME$".CONFIG.AddManualScaling := 0;
+	"AI_$VAR_NAME$".CONFIG.EnableAlarm := 0;

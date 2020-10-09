@@ -1,0 +1,90 @@
+﻿FUNCTION_BLOCK "FB_AI"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Signal : Int;
+   END_VAR
+
+   VAR 
+      STATUS : "AI_STATUS";
+      CONFIG : "AI_CONFIG";
+      ALARM : "AI_ALARM";
+      AUX : "AI_AUX";
+      HMI { S7_SetPoint := 'False'} : "HMI_IO";
+   END_VAR
+
+
+BEGIN
+	//********************************************************************//
+	//Name: FB_AI
+	//Version: 0.1
+	//Description: FB_AI
+	//Developer: Topcast
+	//********************************************************************//
+	
+	//PARAMETRI
+	//********************************************************************//
+	//Signal: Word di ingresso di tipo "int" dichiarata sulla tabella delle variabili PLC
+	
+	//ESEMPIO DI UTILIZZO
+	//********************************************************************//
+	//Dopo aver richiamato correttamente il blocco ed avere eseguito la configurazione si può accedere alla varei funzioni nel seguente modo.
+	//Si fa riferimento alla variabile di esempio "INGRESSO_ANALOGICO" usata negli esempi precedenti
+	//
+	//Lettura del valore
+	//MyValue := AI_INGRESSO_ANALOGICO.AnalogIN.Value
+	//
+	//Allarmi
+	// MyAlarm1 := "AI_INGRESSO_ANALOGICO".AnalogIN.Alarm.HighLimitExceeded;
+	// MyAlarm2 := "AI_INGRESSO_ANALOGICO".AnalogIN.Alarm.LowLimitExceeded;
+	
+	//Value
+	//********************************************************************//
+	IF NOT #CONFIG.DoNotScale THEN
+	    #AUX.SCALE_RET_VAL := SCALE(IN := #Signal,
+	                            HI_LIM := #CONFIG.HighScaleValue,
+	                            LO_LIM := #CONFIG.LowScaleValue,
+	                            BIPOLAR := #CONFIG.IsBipolar,
+	                            OUT => #STATUS.Value);
+	ELSE
+	    #STATUS.Value := #Signal;
+	END_IF;
+	
+	IF #CONFIG.AddManualScaling THEN
+	    #STATUS.Value := #STATUS.Value * #CONFIG.ManualScalingValue;
+	END_IF;
+	
+	IF #CONFIG.AddManualCompensation THEN
+	    #STATUS.Value := #STATUS.Value + #CONFIG.ManualCompValue;
+	END_IF;
+	
+	//AlarmDelay Delay
+	//********************************************************************//
+	//High Limit
+	#AUX.T_HighLimit(IN := #STATUS.Value > #CONFIG.HighLimit AND #CONFIG.HighLimit <> 0,
+	                 PT := #CONFIG.AlarmDelay);
+	
+	//Low Limit
+	#AUX.T_LowLimit(IN := #STATUS.Value < #CONFIG.LowLimit AND #CONFIG.LowLimit <> 0,
+	                PT := #CONFIG.AlarmDelay);
+	
+	//Sensor Fault
+	#AUX.T_SensorFault(IN := (#CONFIG.DoNotScale AND (#Signal > 27660 OR #Signal < -27660))
+	                   OR (NOT #CONFIG.DoNotScale AND #AUX.#SCALE_RET_VAL = 16#0008 AND (#Signal > 27648 OR #Signal < -27648)),
+	                   PT := #CONFIG.AlarmDelay);
+	
+	//Alarms
+	//********************************************************************//
+	IF #CONFIG.EnableAlarm THEN
+	    #ALARM.HighLimitExceeded := #AUX.T_HighLimit.Q;
+	    #ALARM.LowLimitExceeded := #AUX.T_LowLimit.Q;
+	    #ALARM.SensorError := #AUX.T_SensorFault.Q;
+	END_IF;
+	
+	//Hmi
+	//********************************************************************//
+	#HMI.Value := #STATUS.Value;
+	#HMI.RawValue := #Signal;
+	#HMI.Alarm := #ALARM.HighLimitExceeded OR #ALARM.LowLimitExceeded OR #ALARM.SensorError ;
+END_FUNCTION_BLOCK
+

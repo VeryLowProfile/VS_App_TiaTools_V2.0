@@ -1,0 +1,5 @@
+	//AQ_$VAR_NAME$
+	//********************************************************************//
+	"AQ_$VAR_NAME$".CONFIG.HighUnscaleLimit := 0;
+	"AQ_$VAR_NAME$".CONFIG.LowUnscaleLimit := 0;
+	"AQ_$VAR_NAME$".CONFIG.IsBipolar := 0;

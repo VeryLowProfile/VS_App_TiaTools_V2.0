@@ -1,0 +1,104 @@
+﻿FUNCTION_BLOCK "FB_DQ"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_OUTPUT 
+      Signal : Bool;
+   END_VAR
+
+   VAR 
+      STATUS : "DQ_STATUS";
+      COMMAND : "DQ_COMMAND";
+      CONFIG { S7_SetPoint := 'False'} : "DQ_CONFIG";
+      AUX : "DQ_AUX";
+      HMI : "HMI_IO";
+   END_VAR
+
+
+BEGIN
+	//********************************************************************//
+	//Name: FB_DO
+	//Version: x.x
+	//Description: FB_DO
+	//Developer: Topcast
+	//********************************************************************//
+	
+	//PARAMETRI
+	//********************************************************************//
+	//Signal: bit di uscita dichiarato sulla tabella delle variabili PLC
+	
+	//ESEMPIO DI UTILIZZO
+	//********************************************************************//
+	//Dopo aver richiamato correttamente il blocco ed avere eseguito la configurazione si può accedere alla varei funzioni nel seguente modo.
+	//Si fa riferimento alla variabile di esempio "USCITA_DIGITALE" usata negli esempi precedenti
+	//
+	//Comado dell'uscita digitale
+	//"DO_USCITA_GITALE".Command := Valore che si desidera assegnare all'uscita (Questo valore deve essere di tipo Bool)
+	//
+	//Interrogazione dello stato dell'uscita
+	//IF "DO_USCITA_GITALE".Status THEN
+	//
+	//  Some PLC Code ....
+	//  
+	//END_IF;
+	
+	//Manual Command
+	//********************************************************************//
+	IF #HMI.Off THEN
+	    #HMI.Off := 0;
+	    IF #COMMAND.Manual THEN
+	        IF #COMMAND.ManualEnable THEN
+	            IF #COMMAND.Command THEN
+	                #COMMAND.Command := 0;
+	            END_IF;
+	        END_IF;
+	    END_IF;
+	END_IF;
+	
+	IF #HMI.On THEN
+	    #HMI.On := 0;
+	    IF #COMMAND.Manual THEN
+	        IF #COMMAND.ManualEnable THEN
+	            IF NOT #COMMAND.Command THEN
+	                #COMMAND.Command := 1;
+	            END_IF;
+	        END_IF;
+	    END_IF;
+	END_IF;
+	
+	//Delay
+	//********************************************************************//
+	#AUX.#T_OnDelay(IN := #COMMAND.Command OR (#HMI.toggle AND #COMMAND.Manual AND #COMMAND.ManualEnable),
+	                PT := #CONFIG.OnDelay);
+	
+	#AUX.#T_OffDelay(IN := #AUX.#T_OnDelay.Q,
+	                 PT := #CONFIG.OFFDelay);
+	
+	//Output
+	//********************************************************************//
+	#Signal := #AUX.#T_OnDelay.Q OR #AUX.#T_OffDelay.Q;
+	
+	//Status
+	//********************************************************************//
+	#STATUS.Status := #Signal;
+	
+	//Edges
+	//********************************************************************//
+	//R
+	#STATUS.R_Status := #AUX.R_Aux <> #STATUS.Status;
+	#AUX.R_Aux := #STATUS.Status;
+	
+	//F
+	#STATUS.F_Status := #AUX.F_Aux <> #STATUS.Status;
+	#AUX.F_Aux := #STATUS.Status;
+	
+	//Hmi
+	//********************************************************************//
+	#HMI.Status := #STATUS.Status;
+	#HMI.Manual := #COMMAND.Manual;
+	#HMI.ManualEnable := #COMMAND.ManualEnable;
+	
+	
+	
+	
+END_FUNCTION_BLOCK
+

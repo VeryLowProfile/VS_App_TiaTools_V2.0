@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{38AB7A7A-4A6C-4602-8974-132E9EC9AA34}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TiaTools</RootNamespace>
+    <AssemblyName>TiaTools</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icons\TiaTools.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CustomUtility_NET_F, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Library\CustomUtility_NET_F\CustomUtility_NET_F\bin\Debug\CustomUtility_NET_F.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FormMessages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMessages.Designer.cs">
+      <DependentUpon>FormMessages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStateMachines.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStateMachines.Designer.cs">
+      <DependentUpon>FormStateMachines.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTiaToolsHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTiaToolsHome.Designer.cs">
+      <DependentUpon>FormTiaToolsHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormIO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormIO.Designer.cs">
+      <DependentUpon>FormIO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormIO.resx">
+      <DependentUpon>FormIO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMessages.resx">
+      <DependentUpon>FormMessages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStateMachines.resx">
+      <DependentUpon>FormStateMachines.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTiaToolsHome.resx">
+      <DependentUpon>FormTiaToolsHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icons\TiaTools.ico" />
+    <Content Include="IO Txt Files\DB_AI.txt" />
+    <Content Include="IO Txt Files\DB_AQ.txt" />
+    <Content Include="IO Txt Files\DB_DI.txt" />
+    <Content Include="IO Txt Files\DB_DQ.txt" />
+    <Content Include="IO Txt Files\FB_AI.txt" />
+    <Content Include="IO Txt Files\FB_AQ.txt" />
+    <Content Include="IO Txt Files\FB_DI.txt" />
+    <Content Include="IO Txt Files\FB_DQ.txt" />
+    <Content Include="IO Txt Files\FC_AI.txt" />
+    <Content Include="IO Txt Files\FC_AI_Config.txt" />
+    <Content Include="IO Txt Files\FC_AI_Config_Part.txt" />
+    <Content Include="IO Txt Files\FC_AI_Part.txt" />
+    <Content Include="IO Txt Files\FC_AQ.txt" />
+    <Content Include="IO Txt Files\FC_AQ_Config.txt" />
+    <Content Include="IO Txt Files\FC_AQ_Config_Part.txt" />
+    <Content Include="IO Txt Files\FC_AQ_Part.txt" />
+    <Content Include="IO Txt Files\FC_DI.txt" />
+    <Content Include="IO Txt Files\FC_DI_Config.txt" />
+    <Content Include="IO Txt Files\FC_DI_Config_Part.txt" />
+    <Content Include="IO Txt Files\FC_DI_Part.txt" />
+    <Content Include="IO Txt Files\FC_DQ.txt" />
+    <Content Include="IO Txt Files\FC_DQ_Config.txt" />
+    <Content Include="IO Txt Files\FC_DQ_Config_Part.txt" />
+    <Content Include="IO Txt Files\FC_DQ_Part.txt" />
+    <Content Include="Msg Txt Files\DB_Msg.txt" />
+    <Content Include="Msg Txt Files\FC_Msg_Config_Begin.txt" />
+    <Content Include="Msg Txt Files\FC_Msg_Config_Body.txt" />
+    <Content Include="Msg Txt Files\FC_Msg_Config_End.txt" />
+    <Content Include="Msg Txt Files\FC_Msg_Handler_Begin.txt" />
+    <Content Include="Msg Txt Files\FC_Msg_Handler_Body_Store.txt" />
+    <None Include="Msg Txt Files\FC_Msg_Handler_Body_None.txt" />
+    <Content Include="Msg Txt Files\FC_Msg_Handler_End.txt" />
+    <Content Include="Msg Txt Files\FC_Msg_Reaction.txt" />
+    <Content Include="Msg Txt Files\FC_Msg_Store_Sql.txt" />
+    <Content Include="Msg Txt Files\FC_Msg_Trigger_Begin.txt" />
+    <Content Include="Msg Txt Files\FC_Msg_Trigger_Body.txt" />
+    <Content Include="Msg Txt Files\Msg_Types.txt" />
+    <Content Include="SM Txt Files\DB_SM.txt" />
+    <Content Include="SM Txt Files\FC_SM_Hmi_Step.txt" />
+    <Content Include="SM Txt Files\FC_SM_Hmi.txt" />
+    <Content Include="SM Txt Files\FC_SM.txt" />
+    <Content Include="SM Txt Files\FC_SM_Call.txt" />
+    <Content Include="SM Txt Files\FC_SM_Common.txt" />
+    <Content Include="SM Txt Files\FC_SM_Pause_Seq.txt" />
+    <Content Include="SM Txt Files\FC_SM_Phase.txt" />
+    <Content Include="SM Txt Files\FC_SM_Reset_Seq.txt" />
+    <Content Include="SM Txt Files\FC_SM_Step.txt" />
+    <Content Include="SM Txt Files\FC_SM_Stop_Seq.txt" />
+    <Content Include="IO Txt Files\IO_Types.txt" />
+    <Content Include="SM Txt Files\SM_Types.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

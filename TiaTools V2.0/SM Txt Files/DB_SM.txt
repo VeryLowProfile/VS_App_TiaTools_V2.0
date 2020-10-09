@@ -1,0 +1,11 @@
+﻿DATA_BLOCK "DB_SM"
+{ S7_Optimized_Access := 'FALSE' }
+VERSION : 0.1
+NON_RETAIN
+   STRUCT 
+      SM : Array[0..$SM_TOT_NB$] of "SM_GEN";
+   END_STRUCT;
+
+BEGIN
+
+END_DATA_BLOCK

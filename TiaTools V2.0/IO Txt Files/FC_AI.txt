@@ -1,0 +1,25 @@
+﻿FUNCTION "FC_AI" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	//********************************************************************//
+	//Name: FC_AI
+	//Version: x.x
+	//Description: FC_AI
+	//Developer: Topcast
+	//********************************************************************//
+	
+	//ELESMPIO DI RCHIAMO FC_AI
+	//********************************************************************//
+	//Si considera un ingresso analogico definito sulla tabella delle variabili PLC come "INGRESSO_ANALOGICO" al quale può essere assegnata qualsiasi word di ingresso, questo non è importante.
+	//Si richiama il blocco FB_Analog_IN e si genera il db di istanza semplice con nome AI_INGRESSO_ANALOGICO, il codice PLC prenderà questa Forma:
+	//
+	//"AI_INGRESSO_ANALOGICO"();
+	//
+	//Tra le parentesi si inserisce il nome della variabile dichiarata sulla tabella delle variabili PLC in questo caso "INGRESSO_ANALOGICO", il codice prende la seguente forma:
+	//
+	//"AI_INGRESSO_ANALOGICO"("INGRESSO_ANALOGICO");
+	//
+	//Il richiamo è adesso completo
+	
